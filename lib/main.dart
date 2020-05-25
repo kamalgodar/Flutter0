@@ -10,7 +10,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Material(
-        color: Colors.orangeAccent,
+        //color: Colors.orangeAccent,
         child: Home()
       )
     );
@@ -22,14 +22,62 @@ class MyApp extends StatelessWidget {
  }
  
  class _HomeState extends State<Home> {
+
+   Widget buildbutton(String text){
+        return Expanded(
+                 child: MaterialButton(
+                   child: Text(text),
+                   color: Colors.orangeAccent,
+                   splashColor: Colors.white,
+                   padding: EdgeInsets.symmetric(
+                     horizontal: 10,
+                     vertical: 30),
+                   onPressed: (){},
+                 ),
+               );
+   }
    @override
    Widget build(BuildContext context) {
-     return Container(
-       child: Scaffold(
+     return Scaffold(
          appBar: AppBar(title: Text('Calculator'),
          backgroundColor: Colors.orangeAccent,
          ),
-       )  
-     );
+         body: Container(
+           //padding: EdgeInsets.symmetric(vertical: 10),
+           //alignment: Alignment.bottomCenter,
+           child: Column(
+             mainAxisAlignment: MainAxisAlignment.end,
+             children: <Widget>[
+             Row(children: <Widget>[
+               buildbutton("2"),
+               buildbutton("6"),
+               buildbutton("2"),
+               buildbutton("2"),
+               buildbutton("2"),
+             ]),
+             Row(children: <Widget>[
+              buildbutton("2"),
+              buildbutton("2"),
+              buildbutton("2"),
+              buildbutton("2"),
+              buildbutton("2"),
+             ]),
+               Row(children: <Widget>[
+               buildbutton("2"),
+               buildbutton("6"),
+               buildbutton("2"),
+               buildbutton("2"),
+               buildbutton("2"),
+             ]),
+               Row(children: <Widget>[
+               buildbutton("2"),
+               buildbutton("6"),
+               buildbutton("2"),
+               buildbutton("2"),
+               buildbutton("2"),
+             ]),
+           ],)
+         )
+       );
    }
  }
