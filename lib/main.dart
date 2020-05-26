@@ -21,6 +21,38 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+
+  String expression = "0";
+  String output = "0";
+  
+  buttonPressed(String buttonText){
+    //print(buttonText);
+    setState(() {
+      if(buttonText == "AC"){
+        expression = "0";
+        output = "0";
+      }
+
+      else if(buttonText == 'DEL'){
+        output = output.substring(0, output.length - 1);
+        if(output == "")
+        output = "0";
+      }
+
+      else if(buttonText == "="){
+
+      }
+
+      else{
+        if(output == "0"){
+          output = buttonText;
+        }
+        else
+        output = output + buttonText;
+      }
+    });
+  }
+
   Widget buildbutton(String text) {
     return Expanded(
       child: MaterialButton(
@@ -35,7 +67,8 @@ class _HomeState extends State<Home> {
             borderRadius: BorderRadius.circular(30),
             side: BorderSide(color: Colors.black)),
         padding: EdgeInsets.symmetric(horizontal: 20, vertical: 30),
-        onPressed: () {},
+        onPressed: () =>
+        buttonPressed(text)
       ),
     );
   }
@@ -58,11 +91,11 @@ class _HomeState extends State<Home> {
                     Container(
                         alignment: Alignment.centerLeft,
                         padding: EdgeInsets.all(20),
-                        child: Text("Question", style: TextStyle(fontSize: 20))),
+                        child: Text(expression, style: TextStyle(fontSize: 20))),
                     Container(
                         padding: EdgeInsets.all(20),
                         alignment: Alignment.centerRight,
-                        child: Text("Answer", style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold)))
+                        child: Text(output, style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold)))
                   ],
                 )),
           ),
