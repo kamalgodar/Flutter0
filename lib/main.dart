@@ -23,6 +23,11 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
 
   String expression = "0";
+  String operand = "";
+  double num1 = 0;
+  double num2 = 0;
+
+  String tempoutput = "0";
   String output = "0";
   
   buttonPressed(String buttonText){
@@ -33,22 +38,51 @@ class _HomeState extends State<Home> {
         output = "0";
       }
 
-      else if(buttonText == 'DEL'){
-        output = output.substring(0, output.length - 1);
-        if(output == "")
-        output = "0";
+      else if(buttonText == "DEL"){
+        expression = expression.substring(0, expression.length - 1);
+        if(expression == "")
+        expression = "0";
+      }
+
+      else if(buttonText == "+" || buttonText == "-" || buttonText == "x" || buttonText == "/"){
+        num1 = double.parse(expression);
+        operand = buttonText;
+        //expression = expression + operand;
+        expression = "0";
       }
 
       else if(buttonText == "="){
+        num2 = double.parse(expression);
 
+        if(operand == "+"){
+          tempoutput = (num1 + num2).toString();
+        }
+
+         if(operand == "-"){
+          tempoutput = (num1 - num2).toString();
+        }
+
+         if(operand == "x"){
+          tempoutput = (num1 * num2).toString();
+        }
+
+         if(operand == "/"){
+          tempoutput = (num1 / num2).toString();
+        }
+
+        num1=0;
+        num2=0;
+        operand="";
+
+        output = tempoutput;
       }
 
       else{
-        if(output == "0"){
-          output = buttonText;
+        if(expression == "0"){
+          expression = buttonText;
         }
         else
-        output = output + buttonText;
+        expression = expression + buttonText;
       }
     });
   }
