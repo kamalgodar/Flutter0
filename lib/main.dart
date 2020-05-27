@@ -1,5 +1,3 @@
-// import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 
 void main() {
@@ -12,7 +10,6 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
         home: Material(
-            //color: Colors.orangeAccent,
             child: Home()));
   }
 }
@@ -97,20 +94,19 @@ class _HomeState extends State<Home> {
 
   Widget buildbutton(String text, Color color) {
     return Expanded(
-      child: MaterialButton(
+      child: RaisedButton(
           child: Text(text,
               style: TextStyle(
                   color: Colors.black,
-                  fontSize: 15,
+                  fontSize: 23,
                   fontWeight: FontWeight.bold)),
           color: color,
-          splashColor: Colors.purple,
-          highlightColor: Colors.red,
-          hoverColor: Colors.green,
+          splashColor: Colors.white,
           shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(30),
+              borderRadius: BorderRadius.circular(35),
               side: BorderSide(color: Colors.black)),
-          padding: EdgeInsets.symmetric(horizontal: 20, vertical: 30),
+          //shape: CircleBorder(),
+          padding: EdgeInsets.symmetric(horizontal: 20, vertical: 25),
           onPressed: () => buttonPressed(text)),
     );
   }
@@ -120,16 +116,16 @@ class _HomeState extends State<Home> {
     return Scaffold(
         backgroundColor: Colors.orange[200],
         appBar: AppBar(
-          title: Text('Calculator'),
+          title: Text('Calculator',style: TextStyle(color: Colors.black,fontSize: 23),),
           backgroundColor: Colors.orangeAccent,
         ),
         body: Column(children: <Widget>[
           Expanded(
             child: Container(
-                color: Colors.white,
+                color: Color.fromRGBO(235, 190, 52, 100),
                 padding: EdgeInsets.all(20),
                 alignment: Alignment.bottomRight,
-                child: Text(output,style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold)))
+                child: Text(output,style: TextStyle(fontSize: 35, fontWeight: FontWeight.w500)))
                 ),
           
           Expanded(
@@ -142,34 +138,34 @@ class _HomeState extends State<Home> {
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: <Widget>[
                     Row(children: <Widget>[
-                      buildbutton("AC", Colors.green[300]),
-                      buildbutton("DEL", Colors.redAccent),
-                      buildbutton("+/-", Colors.green[300]),
-                      buildbutton("/", Colors.purple[300]),
+                      buildbutton("AC", Color.fromRGBO(52, 235, 183, 100)),
+                      buildbutton("DEL", Color.fromRGBO(235, 20, 52, 100)),
+                      buildbutton("+/-", Color.fromRGBO(52, 235, 183, 100)),
+                      buildbutton("/", Color.fromRGBO(171, 235, 52, 100)),
                     ]),
                     Row(children: <Widget>[
                       buildbutton("7", Colors.orangeAccent),
                       buildbutton("8", Colors.orangeAccent),
                       buildbutton("9", Colors.orangeAccent),
-                      buildbutton("x", Colors.purple[300]),
+                      buildbutton("x", Color.fromRGBO(171, 235, 52, 100)),
                     ]),
                     Row(children: <Widget>[
                       buildbutton("4", Colors.orangeAccent),
                       buildbutton("5", Colors.orangeAccent),
                       buildbutton("6", Colors.orangeAccent),
-                      buildbutton("-", Colors.purple[300]),
+                      buildbutton("-", Color.fromRGBO(171, 235, 52, 100)),
                     ]),
                     Row(children: <Widget>[
                       buildbutton("1", Colors.orangeAccent),
                       buildbutton("2", Colors.orangeAccent),
                       buildbutton("3", Colors.orangeAccent),
-                      buildbutton("+", Colors.purple[300]),
+                      buildbutton("+", Color.fromRGBO(171, 235, 52, 100)),
                     ]),
                     Row(children: <Widget>[
                       buildbutton(".", Colors.orangeAccent),
                       buildbutton("0", Colors.orangeAccent),
                       buildbutton("00", Colors.orangeAccent),
-                      buildbutton("=", Colors.purple[300]),
+                      buildbutton("=", Color.fromRGBO(171, 235, 52, 100)),
                     ]),
                   ],
                 )),
